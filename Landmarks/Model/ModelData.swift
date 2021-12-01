@@ -12,7 +12,7 @@ import Combine
 final class ModelData: ObservableObject {
     //監視可能なオブジェクトは、Subscriberが変更を取得できるように、データへの変更を公開する必要がある
     @Published var landmarks: [Landmark] = load("landmarkData.json")
-    //Hikeデータを読み込んで、その後変更することがないので@Publisherを付けなくて良い
+    //Hikeデータを読み込んで、その後変更することがないので @Publisherを付けなくて良い
     var hikes: [Hike] = load("hikeData.json")
 
     @Published var profile = Profile.default
@@ -29,7 +29,7 @@ final class ModelData: ObservableObject {
     }
 }
 
-///メインバンドルからJSONファイルをデコードして取得するメソッド
+///メインバンドルからJSONファイルを取得してデコードするメソッド
 func load<T: Decodable>(_ filename: String) -> T {
     let data: Data
 
@@ -50,5 +50,4 @@ func load<T: Decodable>(_ filename: String) -> T {
     } catch {
         fatalError("Couldn't parse \(filename) as \(T.self):\n\(error)")
     }
-
 }
